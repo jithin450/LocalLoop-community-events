@@ -18,6 +18,8 @@ The frontend needs these values in Replit Secrets to enable sign-in and event da
 
 The app currently uses Supabase directly from the frontend for authentication and data. The Express service currently exposes only its health endpoint; it does not replace the Supabase configuration.
 
+For a new Supabase project, apply the checked-in schema with `pnpm --filter @workspace/db run setup:localloop`. This one-time command also requires `SUPABASE_DB_URL`, a database connection URI for that same Supabase project. `SUPABASE_DB_URL` is not needed by the running app.
+
 ## Stack
 
 - pnpm workspaces, TypeScript, React, Vite
