@@ -9,7 +9,8 @@
   },
   "scripts": {
     "push": "drizzle-kit push --config ./drizzle.config.ts",
-    "push-force": "drizzle-kit push --force --config ./drizzle.config.ts"
+    "push-force": "drizzle-kit push --force --config ./drizzle.config.ts",
+    "setup:localloop": "node ./scripts/apply-localloop.mjs"
   },
   "dependencies": {
     "drizzle-orm": "catalog:",

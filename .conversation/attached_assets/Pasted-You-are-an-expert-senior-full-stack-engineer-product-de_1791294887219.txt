@@ -1,0 +1,2100 @@
+You are an expert senior full-stack engineer, product designer, UX engineer, database architect, and hackathon project mentor.
+
+Build a COMPLETE, PRODUCTION-READY, FULLY FUNCTIONAL web application called:
+
+# LocalLoop
+### Discover. Connect. Participate.
+
+The application must solve this hackathon problem statement:
+
+"Build an application for discovering and organizing local community events."
+
+The application must NOT be a static UI prototype.
+
+It must be a REAL working full-stack application with:
+- Real authentication
+- Real Supabase PostgreSQL database
+- Real Supabase Storage
+- Real CRUD operations
+- Real event discovery
+- Real event creation
+- Real RSVP/join functionality
+- Real user profiles
+- Real organizer dashboard
+- Real search and filtering
+- Real location-based discovery
+- Real event management
+- Proper authorization
+- Proper Row Level Security
+- Responsive design
+- No fake/mock data after initial setup
+- No dead buttons
+- No placeholder functionality
+
+Use Supabase as the complete backend.
+
+--------------------------------------------------
+# 1. TECHNOLOGY STACK
+--------------------------------------------------
+
+Frontend:
+
+- React
+- Vite
+- TypeScript
+- Tailwind CSS
+- shadcn/ui
+- React Router
+- Lucide React icons
+- TanStack Query if useful
+- React Hook Form
+- Zod validation
+
+Backend:
+
+- Supabase
+- Supabase Authentication
+- PostgreSQL
+- Supabase Storage
+- Supabase Row Level Security
+- Supabase Realtime where useful
+
+Do NOT introduce Firebase.
+
+Do NOT create a separate Node/Express backend unless absolutely necessary.
+
+Use Supabase directly from the React application using the official Supabase JavaScript client.
+
+Environment variables:
+
+VITE_SUPABASE_URL
+VITE_SUPABASE_ANON_KEY
+
+Never hardcode Supabase credentials.
+
+--------------------------------------------------
+# 2. CORE PRODUCT VISION
+--------------------------------------------------
+
+LocalLoop is a community event discovery and organization platform.
+
+Users should be able to:
+
+1. Discover nearby community events
+2. Search events
+3. Filter events
+4. View event details
+5. RSVP to events
+6. Cancel RSVP
+7. Save/bookmark events
+8. Create their own events
+9. Edit their events
+10. Manage attendees
+11. View their upcoming events
+12. View events they joined
+13. Create a personal profile
+14. Upload profile picture
+15. Upload event images
+16. Discover events by category
+17. Discover events by location
+18. See event capacity and availability
+19. Share events
+20. Organize local communities around events
+
+The application should make people feel:
+
+"What's happening around me?"
+
+and
+
+"I can easily bring my local community together."
+
+--------------------------------------------------
+# 3. TARGET USERS
+--------------------------------------------------
+
+There are three primary roles:
+
+A. PARTICIPANT
+
+Can:
+- Browse events
+- Search events
+- Filter events
+- View event details
+- RSVP
+- Cancel RSVP
+- Bookmark events
+- View joined events
+- Manage profile
+- Share events
+
+B. ORGANIZER
+
+Can do everything a participant can do plus:
+- Create events
+- Edit events
+- Delete/cancel events
+- Upload event cover image
+- Set event capacity
+- Manage attendees
+- View attendee count
+- View event analytics
+- Manage their created events
+
+C. ADMIN
+
+Can:
+- View all users
+- View all events
+- Moderate events
+- Remove inappropriate events
+- Manage categories
+- View platform statistics
+- Manage reported events
+- Suspend problematic users if implemented
+
+Do NOT create separate registration pages for roles.
+
+Every user starts as a participant.
+
+Users can become an organizer by creating an event.
+
+--------------------------------------------------
+# 4. BRANDING
+--------------------------------------------------
+
+Product name:
+
+LocalLoop
+
+Tagline:
+
+"Discover. Connect. Participate."
+
+Visual style:
+
+Modern
+Premium
+Community-focused
+Friendly
+Professional
+Hackathon-winning
+
+Design inspiration:
+
+Use a combination of:
+- modern SaaS dashboard
+- event discovery platform
+- community platform
+- location-based application
+
+Do NOT make it look like a generic admin dashboard.
+
+Use:
+- rounded cards
+- subtle shadows
+- glass/gradient accents where appropriate
+- clean typography
+- excellent spacing
+- modern icons
+- attractive event cards
+- smooth hover animations
+- subtle transitions
+
+Primary visual direction:
+
+Dark navy / indigo / violet with bright accent colors.
+
+However, maintain excellent contrast and accessibility.
+
+Include both:
+
+- Light mode
+- Dark mode
+
+Add a theme toggle.
+
+Use responsive design from mobile to desktop.
+
+--------------------------------------------------
+# 5. NAVIGATION
+--------------------------------------------------
+
+Desktop navbar:
+
+Logo:
+LocalLoop
+
+Navigation:
+
+Home
+Explore
+Create Event
+My Events
+Saved
+Profile
+
+Right side:
+
+Search
+Theme toggle
+Notification icon
+Profile avatar
+
+Mobile:
+
+Use a bottom navigation bar:
+
+Home
+Explore
+Create
+My Events
+Profile
+
+Use a mobile-friendly hamburger menu if necessary.
+
+--------------------------------------------------
+# 6. LANDING / HOME PAGE
+--------------------------------------------------
+
+Create an impressive homepage.
+
+Hero section:
+
+Headline:
+
+"Discover What's Happening Around You."
+
+Subheading:
+
+"Find local events, meet your community, and turn shared interests into real-world experiences."
+
+Hero search:
+
+"What are you looking for?"
+
+Search events by:
+- event name
+- category
+- location
+
+CTA buttons:
+
+"Explore Events"
+"Create an Event"
+
+Below hero:
+
+"Trending Near You"
+
+Show attractive event cards.
+
+Sections:
+
+1. Trending Events
+2. Happening This Week
+3. Popular Categories
+4. Near You
+5. Community Highlights
+6. How LocalLoop Works
+7. Call to Action
+
+Example categories:
+
+Technology
+Music
+Sports
+Education
+Art & Culture
+Food
+Environment
+Volunteering
+Networking
+Workshops
+Health & Wellness
+Community
+
+Do NOT use fake static event data once database is configured.
+
+Fetch real data from Supabase.
+
+If database is empty, show a beautiful empty state and provide seed-data SQL/instructions.
+
+--------------------------------------------------
+# 7. AUTHENTICATION
+--------------------------------------------------
+
+Implement Supabase Authentication.
+
+Support:
+
+Email + password signup
+Email + password login
+Logout
+Forgot password
+Reset password
+Session persistence
+
+Signup fields:
+
+Full Name
+Email
+Password
+Confirm Password
+
+After registration:
+
+Create corresponding profile record.
+
+Do not expose sensitive information.
+
+Protect authenticated routes.
+
+Implement:
+
+AuthContext / auth provider.
+
+Listen for Supabase auth state changes.
+
+Redirect unauthenticated users to login.
+
+Redirect authenticated users appropriately.
+
+Show loading states while checking authentication.
+
+--------------------------------------------------
+# 8. PROFILE
+--------------------------------------------------
+
+Create profile page.
+
+Fields:
+
+Full Name
+Username
+Email
+Bio
+City
+Profile Picture
+Interests
+
+Allow users to edit profile.
+
+Profile picture should be uploaded to:
+
+Supabase Storage bucket:
+avatars
+
+Use public or signed URLs appropriately.
+
+Display:
+
+Events Created
+Events Joined
+Saved Events
+
+Show user's interests.
+
+--------------------------------------------------
+# 9. DATABASE ARCHITECTURE
+--------------------------------------------------
+
+Create a proper normalized PostgreSQL database in Supabase.
+
+Tables:
+
+profiles
+
+events
+
+event_attendees
+
+saved_events
+
+categories
+
+event_categories
+
+event_reports
+
+notifications
+
+--------------------------------------------------
+# 10. PROFILES TABLE
+--------------------------------------------------
+
+Create:
+
+profiles
+
+Columns:
+
+id UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE
+
+full_name TEXT
+
+username TEXT UNIQUE
+
+email TEXT
+
+avatar_url TEXT
+
+bio TEXT
+
+city TEXT
+
+interests TEXT[]
+
+role TEXT DEFAULT 'participant'
+
+created_at TIMESTAMPTZ DEFAULT NOW()
+
+updated_at TIMESTAMPTZ DEFAULT NOW()
+
+Allowed roles:
+
+participant
+organizer
+admin
+
+Create proper indexes.
+
+Automatically create profile when a user signs up.
+
+--------------------------------------------------
+# 11. CATEGORIES TABLE
+--------------------------------------------------
+
+categories:
+
+id UUID PRIMARY KEY
+
+name TEXT UNIQUE NOT NULL
+
+description TEXT
+
+icon TEXT
+
+created_at TIMESTAMPTZ DEFAULT NOW()
+
+Seed:
+
+Technology
+Music
+Sports
+Education
+Art & Culture
+Food
+Environment
+Volunteering
+Networking
+Workshop
+Health
+Community
+
+--------------------------------------------------
+# 12. EVENTS TABLE
+--------------------------------------------------
+
+Create:
+
+events
+
+Fields:
+
+id UUID PRIMARY KEY DEFAULT gen_random_uuid()
+
+organizer_id UUID REFERENCES profiles(id) ON DELETE CASCADE
+
+title TEXT NOT NULL
+
+description TEXT NOT NULL
+
+cover_image_url TEXT
+
+location_name TEXT NOT NULL
+
+address TEXT
+
+city TEXT NOT NULL
+
+latitude DOUBLE PRECISION
+
+longitude DOUBLE PRECISION
+
+start_time TIMESTAMPTZ NOT NULL
+
+end_time TIMESTAMPTZ
+
+capacity INTEGER
+
+attendee_count INTEGER DEFAULT 0
+
+is_online BOOLEAN DEFAULT FALSE
+
+online_url TEXT
+
+status TEXT DEFAULT 'published'
+
+created_at TIMESTAMPTZ DEFAULT NOW()
+
+updated_at TIMESTAMPTZ DEFAULT NOW()
+
+Constraints:
+
+status must be one of:
+
+draft
+published
+cancelled
+completed
+
+capacity must be greater than 0 if provided.
+
+--------------------------------------------------
+# 13. EVENT CATEGORIES
+--------------------------------------------------
+
+Create:
+
+event_categories
+
+event_id UUID REFERENCES events(id) ON DELETE CASCADE
+
+category_id UUID REFERENCES categories(id) ON DELETE CASCADE
+
+PRIMARY KEY(event_id, category_id)
+
+--------------------------------------------------
+# 14. EVENT ATTENDEES
+--------------------------------------------------
+
+Create:
+
+event_attendees
+
+id UUID PRIMARY KEY DEFAULT gen_random_uuid()
+
+event_id UUID REFERENCES events(id) ON DELETE CASCADE
+
+user_id UUID REFERENCES profiles(id) ON DELETE CASCADE
+
+status TEXT DEFAULT 'going'
+
+created_at TIMESTAMPTZ DEFAULT NOW()
+
+Unique constraint:
+
+(event_id, user_id)
+
+Status:
+
+going
+cancelled
+
+Prevent duplicate RSVP.
+
+Prevent RSVP after event capacity has been reached.
+
+--------------------------------------------------
+# 15. SAVED EVENTS
+--------------------------------------------------
+
+Create:
+
+saved_events
+
+id UUID PRIMARY KEY DEFAULT gen_random_uuid()
+
+event_id UUID REFERENCES events(id) ON DELETE CASCADE
+
+user_id UUID REFERENCES profiles(id) ON DELETE CASCADE
+
+created_at TIMESTAMPTZ DEFAULT NOW()
+
+Unique constraint:
+
+(event_id, user_id)
+
+--------------------------------------------------
+# 16. EVENT REPORTS
+--------------------------------------------------
+
+Create:
+
+event_reports
+
+id UUID PRIMARY KEY DEFAULT gen_random_uuid()
+
+event_id UUID REFERENCES events(id) ON DELETE CASCADE
+
+reported_by UUID REFERENCES profiles(id) ON DELETE CASCADE
+
+reason TEXT
+
+description TEXT
+
+status TEXT DEFAULT 'pending'
+
+created_at TIMESTAMPTZ DEFAULT NOW()
+
+--------------------------------------------------
+# 17. NOTIFICATIONS
+--------------------------------------------------
+
+Create:
+
+notifications
+
+id UUID PRIMARY KEY DEFAULT gen_random_uuid()
+
+user_id UUID REFERENCES profiles(id) ON DELETE CASCADE
+
+title TEXT
+
+message TEXT
+
+type TEXT
+
+read BOOLEAN DEFAULT FALSE
+
+event_id UUID REFERENCES events(id) ON DELETE SET NULL
+
+created_at TIMESTAMPTZ DEFAULT NOW()
+
+--------------------------------------------------
+# 18. DATABASE SECURITY
+--------------------------------------------------
+
+This is extremely important.
+
+Implement Supabase Row Level Security.
+
+Enable RLS on every application table.
+
+Users can:
+
+Profiles:
+- view public profiles
+- update only their own profile
+
+Events:
+- everyone can view published events
+- authenticated users can create events
+- organizers can update only their own events
+- organizers can delete/cancel only their own events
+- admins can manage all events
+
+Event attendees:
+- authenticated users can RSVP themselves
+- authenticated users can cancel their own RSVP
+- organizers can view attendees of their own events
+- admins can view all attendees
+
+Saved events:
+- users can create/delete/view only their own saved events
+
+Reports:
+- authenticated users can create reports
+- users can view their own reports
+- admins can manage reports
+
+Notifications:
+- users can view/update only their own notifications
+
+Write all SQL policies.
+
+Never disable RLS just to make the application work.
+
+--------------------------------------------------
+# 19. STORAGE
+--------------------------------------------------
+
+Create Supabase Storage buckets:
+
+avatars
+event-images
+
+Storage rules:
+
+Users can upload/update their own avatars.
+
+Authenticated users can upload event images.
+
+Only authorized users should be able to modify images associated with their events.
+
+Validate file types:
+
+JPG
+JPEG
+PNG
+WEBP
+
+Limit file size.
+
+Display upload progress.
+
+Show image preview before upload.
+
+Handle upload errors gracefully.
+
+--------------------------------------------------
+# 20. EXPLORE EVENTS PAGE
+--------------------------------------------------
+
+Create:
+
+/explore
+
+This is the main event discovery experience.
+
+Top:
+
+Large search bar:
+
+"Search events, categories or locations..."
+
+Filters:
+
+Category
+City
+Date
+Distance
+Availability
+Event type
+
+Date options:
+
+Today
+Tomorrow
+This Week
+This Weekend
+Next Week
+Custom Date
+
+Event type:
+
+Online
+In-person
+
+Availability:
+
+Available
+Almost Full
+Full
+
+Sort:
+
+Recommended
+Date
+Newest
+Most Popular
+
+Display responsive event grid.
+
+Desktop:
+
+3 cards per row.
+
+Tablet:
+
+2 cards.
+
+Mobile:
+
+1 card.
+
+Use pagination or infinite loading.
+
+--------------------------------------------------
+# 21. EVENT CARD
+--------------------------------------------------
+
+Every event card should display:
+
+Cover image
+
+Category badge
+
+Event title
+
+Short description
+
+Date
+
+Time
+
+Location
+
+City
+
+Organizer
+
+Attendee count
+
+Capacity indicator
+
+Save/bookmark button
+
+"View Event" button
+
+Example:
+
+--------------------------------------------------
+Tech Meetup 2026
+
+Technology
+
+Oct 18
+6:00 PM
+
+📍 Bengaluru
+
+42 / 100 attending
+
+[Save]
+
+[View Event]
+--------------------------------------------------
+
+Use real database values.
+
+--------------------------------------------------
+# 22. EVENT DETAILS PAGE
+--------------------------------------------------
+
+Create:
+
+/events/:id
+
+Layout:
+
+Large cover image
+
+Event title
+
+Category
+
+Date
+Time
+Location
+
+Organizer information
+
+Description
+
+Attendee count
+
+Capacity progress bar
+
+Map/location section
+
+Actions:
+
+RSVP / Join Event
+Cancel RSVP
+Save
+Share
+Report
+
+If event is full:
+
+Show:
+
+"Event Full"
+
+If current user is attending:
+
+Show:
+
+"You're Going ✓"
+
+Organizer sees:
+
+Edit Event
+Manage Attendees
+Cancel Event
+
+Show:
+
+"People Going"
+
+Display participant avatars where possible.
+
+--------------------------------------------------
+# 23. LOCATION / MAP
+--------------------------------------------------
+
+Events should support location information.
+
+Use latitude and longitude when available.
+
+Create a location card.
+
+If practical, integrate a map provider such as:
+
+OpenStreetMap + Leaflet
+
+Do NOT require a paid API.
+
+Display:
+
+Map
+Location marker
+Address
+
+For online events:
+
+Display:
+
+"Online Event"
+
+and the online meeting link.
+
+Do not expose private links unnecessarily.
+
+--------------------------------------------------
+# 24. CREATE EVENT
+--------------------------------------------------
+
+Create:
+
+/create-event
+
+Build a professional multi-section event creation form.
+
+Fields:
+
+Event Title
+Description
+Category
+Additional Categories
+Cover Image
+Date
+Start Time
+End Time
+Location
+Address
+City
+Latitude
+Longitude
+Capacity
+Online/In-person
+
+If online:
+
+Meeting URL
+
+Validation:
+
+Title required
+Description required
+Category required
+Date required
+Start time required
+Location required for physical events
+Meeting URL required for online events
+Capacity must be positive
+
+Preview before publishing.
+
+Buttons:
+
+Save Draft
+Publish Event
+
+After publishing:
+
+Show success notification.
+
+Redirect to event details.
+
+--------------------------------------------------
+# 25. IMAGE UPLOAD
+--------------------------------------------------
+
+For event creation:
+
+Allow drag-and-drop image upload.
+
+Show:
+
+Upload progress
+Preview
+Remove image
+Replace image
+
+Upload to:
+
+event-images
+
+Save resulting URL in events.cover_image_url.
+
+Do NOT store base64 images in PostgreSQL.
+
+--------------------------------------------------
+# 26. MY EVENTS
+--------------------------------------------------
+
+Create:
+
+/my-events
+
+Tabs:
+
+Upcoming
+Joined
+Created
+Past
+Saved
+
+Upcoming:
+
+Events the user is attending.
+
+Joined:
+
+Events user has RSVP'd.
+
+Created:
+
+Events created by user.
+
+Past:
+
+Completed events.
+
+Saved:
+
+Bookmarked events.
+
+Each should use real database queries.
+
+--------------------------------------------------
+# 27. ORGANIZER DASHBOARD
+--------------------------------------------------
+
+Create:
+
+/organizer
+
+Show organizer analytics.
+
+Metrics:
+
+Total Events
+Upcoming Events
+Total Attendees
+Average Attendance
+
+Event performance:
+
+Event title
+Views if tracking implemented
+RSVPs
+Capacity
+Attendance percentage
+Status
+
+Charts:
+
+Events created over time
+RSVPs over time
+Popular categories
+
+Use a clean dashboard.
+
+Organizer can:
+
+Create event
+Edit event
+Cancel event
+View attendees
+
+--------------------------------------------------
+# 28. ATTENDEE MANAGEMENT
+--------------------------------------------------
+
+Organizer can open:
+
+/events/:id/attendees
+
+Display:
+
+Participant avatar
+Name
+Email if permitted
+RSVP date
+Status
+
+Search attendees.
+
+Count attendees.
+
+Export CSV if practical.
+
+Do not expose unnecessary private user information.
+
+--------------------------------------------------
+# 29. SAVED EVENTS
+--------------------------------------------------
+
+Create:
+
+/saved
+
+Display all bookmarked events.
+
+Click bookmark icon to toggle.
+
+Optimistically update UI where safe.
+
+Persist everything in Supabase.
+
+--------------------------------------------------
+# 30. SEARCH
+--------------------------------------------------
+
+Implement real event search.
+
+Search across:
+
+title
+description
+location_name
+address
+city
+
+Search should debounce input.
+
+Show suggestions where useful.
+
+Example:
+
+User enters:
+
+"coding"
+
+Results:
+
+Coding Workshop
+Developer Meetup
+AI Hackathon
+
+--------------------------------------------------
+# 31. SMART DISCOVERY
+--------------------------------------------------
+
+Create a "Recommended For You" section.
+
+Use simple recommendation logic based on:
+
+- user's city
+- user's interests
+- categories they previously joined
+- saved events
+- upcoming events
+- popularity
+
+Do NOT use an expensive external AI API unless necessary.
+
+A rule-based recommendation engine is sufficient.
+
+Example scoring:
+
++5 matching interest
++4 same city
++3 previously joined category
++2 popular event
++2 upcoming soon
+
+Sort based on score.
+
+Make this transparent and explainable.
+
+--------------------------------------------------
+# 32. LOCATION-BASED DISCOVERY
+--------------------------------------------------
+
+If browser location permission is granted:
+
+Get approximate latitude/longitude.
+
+Show:
+
+"Events Near You"
+
+Calculate approximate distance.
+
+Display:
+
+"2.4 km away"
+
+Do NOT require location permission.
+
+If permission denied:
+
+Fall back to user's selected city.
+
+Allow user to manually select city.
+
+--------------------------------------------------
+# 33. RSVP SYSTEM
+--------------------------------------------------
+
+RSVP must be fully functional.
+
+When user clicks:
+
+"Join Event"
+
+Create record in:
+
+event_attendees
+
+Update attendee count safely.
+
+Do not allow duplicate RSVP.
+
+Do not allow RSVP if:
+
+event cancelled
+event completed
+capacity reached
+
+If successful:
+
+Show:
+
+"You're going! 🎉"
+
+Generate notification.
+
+--------------------------------------------------
+# 34. CANCEL RSVP
+--------------------------------------------------
+
+When user cancels:
+
+Remove or mark attendee record cancelled.
+
+Update count.
+
+Show confirmation.
+
+Allow rejoining later if event isn't full.
+
+--------------------------------------------------
+# 35. EVENT SHARING
+--------------------------------------------------
+
+Add Share button.
+
+Use Web Share API where supported.
+
+Fallback:
+
+Copy event URL.
+
+Show toast:
+
+"Event link copied!"
+
+--------------------------------------------------
+# 36. NOTIFICATIONS
+--------------------------------------------------
+
+Create notification center.
+
+Notifications can include:
+
+RSVP confirmation
+Event cancellation
+Event updated
+New attendee
+Event reminder
+
+Unread notification count.
+
+Mark as read.
+
+Use Supabase Realtime if practical.
+
+--------------------------------------------------
+# 37. ADMIN DASHBOARD
+--------------------------------------------------
+
+Create admin-only dashboard.
+
+Route:
+
+/admin
+
+Show:
+
+Total users
+Total events
+Upcoming events
+Total RSVPs
+Reported events
+
+Admin can:
+
+View events
+View reports
+Approve/remove problematic content
+View users
+Manage categories
+
+Admin routes must be protected using role checks.
+
+Never rely only on frontend authorization.
+
+Use database RLS.
+
+--------------------------------------------------
+# 38. EVENT REPORTING
+--------------------------------------------------
+
+On event details:
+
+Report Event
+
+Reasons:
+
+Spam
+Inappropriate
+Fake Event
+Incorrect Information
+Other
+
+Submit report.
+
+Admin sees reports.
+
+Admin can:
+
+Resolve
+Dismiss
+Remove event
+
+--------------------------------------------------
+# 39. RESPONSIVE DESIGN
+--------------------------------------------------
+
+The application MUST work on:
+
+Mobile
+Tablet
+Laptop
+Desktop
+
+Test widths:
+
+375px
+390px
+768px
+1024px
+1440px
+
+Do not allow:
+
+horizontal overflow
+broken cards
+cut-off text
+overlapping buttons
+broken navigation
+
+Mobile UI should feel intentionally designed, not simply compressed desktop UI.
+
+--------------------------------------------------
+# 40. LOADING STATES
+--------------------------------------------------
+
+Every async operation needs proper feedback.
+
+Use:
+
+Skeleton loaders
+Spinners
+Disabled buttons during submission
+Progress indicators
+
+Never show a blank screen while data loads.
+
+--------------------------------------------------
+# 41. EMPTY STATES
+--------------------------------------------------
+
+Create attractive empty states.
+
+Examples:
+
+No events found:
+
+"Nothing nearby yet"
+
+"Try changing your filters or explore another city."
+
+Saved:
+
+"You haven't saved any events yet."
+
+Created:
+
+"Bring your community together."
+
+"Create your first event."
+
+Joined:
+
+"You're not attending any events yet."
+
+--------------------------------------------------
+# 42. ERROR HANDLING
+--------------------------------------------------
+
+Handle:
+
+Network errors
+Supabase errors
+Authentication errors
+Upload errors
+Database errors
+Invalid forms
+Duplicate RSVP
+Full events
+Unauthorized actions
+
+Show friendly messages.
+
+Never display raw database errors to users.
+
+Log useful errors for development.
+
+--------------------------------------------------
+# 43. SECURITY
+--------------------------------------------------
+
+Implement:
+
+Supabase RLS
+Input validation
+Protected routes
+Role-based authorization
+Safe file uploads
+No secret keys in frontend
+No service role key in frontend
+No hardcoded credentials
+
+Use:
+
+VITE_SUPABASE_URL
+VITE_SUPABASE_ANON_KEY
+
+Never use:
+
+SUPABASE_SERVICE_ROLE_KEY
+
+inside frontend code.
+
+--------------------------------------------------
+# 44. DATABASE FUNCTIONS / TRANSACTIONS
+--------------------------------------------------
+
+Where race conditions are possible, especially RSVP capacity, use PostgreSQL functions/RPC where appropriate.
+
+Create a secure function such as:
+
+join_event(event_uuid UUID)
+
+The function should:
+
+1. Verify authenticated user
+2. Check event exists
+3. Check event is published
+4. Check capacity
+5. Check user isn't already attending
+6. Insert RSVP
+7. Update attendee count safely
+8. Return success/failure
+
+This is important because two users could attempt to join the last available slot simultaneously.
+
+--------------------------------------------------
+# 45. DESIGN COMPONENTS
+--------------------------------------------------
+
+Create reusable components:
+
+Navbar
+MobileNav
+Footer
+EventCard
+EventGrid
+CategoryCard
+SearchBar
+FilterPanel
+DateFilter
+LocationFilter
+EventDetails
+RSVPButton
+SaveButton
+ShareButton
+Avatar
+ProfileCard
+NotificationPanel
+EventForm
+ImageUploader
+MapView
+LoadingSkeleton
+EmptyState
+ErrorState
+Toast
+ConfirmDialog
+Modal
+StatsCard
+
+Keep code modular.
+
+Do NOT put the entire application into one huge component.
+
+--------------------------------------------------
+# 46. ROUTING
+--------------------------------------------------
+
+Routes:
+
+/
+/login
+/signup
+/forgot-password
+/reset-password
+/explore
+/events/:id
+/create-event
+/events/:id/edit
+/events/:id/attendees
+/my-events
+/saved
+/profile
+/profile/edit
+/organizer
+/admin
+
+Protected routes:
+
+/create-event
+/my-events
+/saved
+/profile
+/organizer
+
+Admin route:
+
+/admin
+
+Organizer event-management routes must verify ownership.
+
+--------------------------------------------------
+# 47. SUPABASE CLIENT
+--------------------------------------------------
+
+Create:
+
+src/lib/supabase.ts
+
+Initialize Supabase using environment variables.
+
+Do not duplicate Supabase client creation.
+
+Create reusable database service functions where appropriate.
+
+Example structure:
+
+src/
+  components/
+  pages/
+  layouts/
+  hooks/
+  lib/
+  services/
+  types/
+  utils/
+  contexts/
+
+--------------------------------------------------
+# 48. TYPESCRIPT
+--------------------------------------------------
+
+Create strong TypeScript types for:
+
+Profile
+Event
+Category
+EventAttendee
+SavedEvent
+Notification
+EventReport
+
+Avoid:
+
+any
+
+unless absolutely unavoidable.
+
+Generate database types if possible using Supabase tooling.
+
+--------------------------------------------------
+# 49. UX DETAILS
+--------------------------------------------------
+
+Add polished micro-interactions:
+
+Hover cards
+Button transitions
+Bookmark animation
+RSVP success animation
+Toast messages
+Image loading transitions
+Skeleton loaders
+
+Do not over-animate.
+
+The application should feel fast.
+
+--------------------------------------------------
+# 50. ACCESSIBILITY
+--------------------------------------------------
+
+Implement:
+
+Semantic HTML
+ARIA labels where necessary
+Keyboard navigation
+Visible focus states
+Accessible contrast
+Proper form labels
+Alt text for images
+
+Buttons must have clear labels.
+
+--------------------------------------------------
+# 51. PERFORMANCE
+--------------------------------------------------
+
+Optimize:
+
+Images
+Database queries
+React rendering
+Event lists
+
+Use pagination.
+
+Do not download thousands of events at once.
+
+Use indexes on:
+
+events.city
+events.start_time
+events.organizer_id
+events.status
+
+Search-related fields should be optimized appropriately.
+
+--------------------------------------------------
+# 52. DATABASE INDEXES
+--------------------------------------------------
+
+Create useful indexes such as:
+
+events_city_idx
+events_start_time_idx
+events_status_idx
+events_organizer_idx
+event_attendees_event_idx
+event_attendees_user_idx
+saved_events_user_idx
+
+--------------------------------------------------
+# 53. SEED DATA
+--------------------------------------------------
+
+Create realistic seed data for demonstration.
+
+Use fictional community events such as:
+
+AI & Future Tech Meetup
+Weekend Football League
+Community Beach Cleanup
+Photography Walk
+Startup Networking Night
+Open Mic Evening
+Web Development Workshop
+Local Food Festival
+College Coding Meetup
+Mental Wellness Workshop
+
+Use realistic dates and locations.
+
+IMPORTANT:
+
+Clearly separate seed/demo data from production user-generated data.
+
+Do not permanently hardcode these events into the UI.
+
+They must exist in Supabase database.
+
+--------------------------------------------------
+# 54. DEMO EXPERIENCE
+--------------------------------------------------
+
+The hackathon judges should be able to immediately understand the product.
+
+Make the home page visually impressive.
+
+Create a smooth demo flow:
+
+1. Open LocalLoop
+2. See nearby/trending events
+3. Search "technology"
+4. Filter events
+5. Open an event
+6. RSVP
+7. Save event
+8. Create an event
+9. Upload event image
+10. Publish
+11. Open organizer dashboard
+12. Show attendee analytics
+
+Everything should work.
+
+--------------------------------------------------
+# 55. DEMO ADMIN ACCOUNT
+--------------------------------------------------
+
+If possible, provide clear instructions for creating an admin user.
+
+Do NOT hardcode admin credentials into the frontend.
+
+Use a secure Supabase approach.
+
+Provide SQL/instructions for assigning admin role to a specific authenticated user.
+
+--------------------------------------------------
+# 56. README
+--------------------------------------------------
+
+Create a professional README.md.
+
+Include:
+
+Project name
+Problem statement
+Solution
+Features
+Tech stack
+Architecture
+Database schema
+Supabase setup
+Environment variables
+Authentication setup
+Storage setup
+RLS setup
+Local development
+Deployment
+Demo flow
+
+Also include:
+
+"How to configure Supabase"
+
+Step-by-step.
+
+--------------------------------------------------
+# 57. SUPABASE SETUP
+--------------------------------------------------
+
+If the Replit environment has Supabase integration available, use it.
+
+If Supabase is not connected automatically:
+
+DO NOT replace Supabase with mock backend.
+
+Instead:
+
+1. Build the application against Supabase.
+2. Create a complete SQL migration file:
+   supabase/schema.sql
+3. Create seed file:
+   supabase/seed.sql
+4. Clearly show exactly what needs to be executed in Supabase.
+5. Make the application ready to work immediately once environment variables are configured.
+
+If integration allows database creation directly, create everything automatically.
+
+--------------------------------------------------
+# 58. ENVIRONMENT SETUP
+--------------------------------------------------
+
+Create:
+
+.env.example
+
+with:
+
+VITE_SUPABASE_URL=
+VITE_SUPABASE_ANON_KEY=
+
+Do not expose real credentials in source code.
+
+--------------------------------------------------
+# 59. FINAL QUALITY CHECK
+--------------------------------------------------
+
+Before declaring the project complete, perform a full audit.
+
+Check:
+
+Authentication works
+Signup works
+Login works
+Logout works
+Profile creation works
+Profile editing works
+Avatar upload works
+Event creation works
+Event image upload works
+Event editing works
+Event deletion/cancellation works
+Event listing works
+Search works
+Filters work
+Event details work
+RSVP works
+Duplicate RSVP prevented
+Capacity enforced
+Cancel RSVP works
+Save event works
+Unsave works
+My Events works
+Organizer dashboard works
+Attendee management works
+Notifications work
+Admin authorization works
+Reports work
+RLS works
+Storage permissions work
+Responsive UI works
+Dark mode works
+No broken routes
+No console errors
+No TypeScript errors
+No unused broken imports
+No fake buttons
+No placeholder links
+No mock API calls
+No hardcoded event data in frontend
+No exposed secrets
+
+Run:
+
+npm install
+npm run build
+
+and fix ALL build errors.
+
+Also run lint/type checks if configured.
+
+--------------------------------------------------
+# 60. IMPORTANT DEVELOPMENT RULE
+--------------------------------------------------
+
+DO NOT STOP AFTER GENERATING THE UI.
+
+DO NOT SAY:
+
+"Backend can be implemented later."
+
+DO NOT create:
+
+fake login
+fake RSVP
+fake event creation
+localStorage-only database
+static JSON events
+mock API
+
+The application must use Supabase.
+
+Every important button must perform a real action.
+
+Every page must be connected to the real database.
+
+--------------------------------------------------
+# 61. IF SOMETHING IS BROKEN
+--------------------------------------------------
+
+Debug it yourself.
+
+Do not simply tell me:
+
+"There's an issue with Supabase."
+
+Inspect the code.
+
+Check:
+
+environment variables
+Supabase client
+database schema
+RLS
+query syntax
+TypeScript types
+routing
+React state
+storage permissions
+
+Fix the issue.
+
+--------------------------------------------------
+# 62. FINAL UI QUALITY
+--------------------------------------------------
+
+The final application should look like a serious startup product.
+
+It should NOT look like:
+
+a college CRUD project
+a generic dashboard
+a basic Bootstrap website
+an unfinished AI-generated template
+
+It should look like a polished community platform.
+
+Prioritize:
+
+Visual hierarchy
+User experience
+Speed
+Accessibility
+Real functionality
+Clean architecture
+Security
+Scalability
+
+--------------------------------------------------
+# 63. HACKATHON DIFFERENTIATORS
+--------------------------------------------------
+
+Add these features if they can be implemented cleanly:
+
+1. "Near You" event discovery
+
+2. Smart recommendations
+
+3. Event capacity visualization
+
+4. Community categories
+
+5. Event sharing
+
+6. Organizer analytics
+
+7. Event reporting/moderation
+
+8. Saved events
+
+9. Online + offline event support
+
+10. Distance-based discovery
+
+These features should feel integrated rather than randomly added.
+
+--------------------------------------------------
+# 64. OPTIONAL ADVANCED FEATURES
+--------------------------------------------------
+
+If the core application is fully working and stable, add:
+
+A. Calendar export
+
+Allow users to add an event to:
+
+Google Calendar
+Apple Calendar
+ICS download
+
+B. Event reminders
+
+Create notification infrastructure for upcoming events.
+
+C. QR check-in
+
+Generate a simple QR code for an event.
+
+Organizer can scan/check attendance.
+
+Only implement this if it does not destabilize the core application.
+
+--------------------------------------------------
+# 65. ERROR-FREE DELIVERY REQUIREMENT
+--------------------------------------------------
+
+The priority order is:
+
+1. Working application
+2. Working Supabase backend
+3. Authentication
+4. Event CRUD
+5. RSVP
+6. Search/filter
+7. Organizer dashboard
+8. Security/RLS
+9. UI polish
+10. Advanced features
+
+Never sacrifice core functionality for visual effects.
+
+--------------------------------------------------
+# 66. START NOW
+--------------------------------------------------
+
+Start by:
+
+1. Inspecting the existing Replit project.
+2. Determine whether React/Vite is already configured.
+3. Preserve useful existing code if present.
+4. Install only required dependencies.
+5. Build the application architecture.
+6. Configure Supabase.
+7. Create database schema.
+8. Create RLS policies.
+9. Create storage configuration.
+10. Implement authentication.
+11. Implement core pages.
+12. Connect everything to Supabase.
+13. Implement event CRUD.
+14. Implement RSVP.
+15. Implement search/filter.
+16. Implement organizer dashboard.
+17. Implement admin functionality.
+18. Polish UI.
+19. Test the entire application.
+20. Fix all errors.
+21. Run production build.
+
+Do not ask me unnecessary questions.
+
+Make sensible engineering decisions yourself.
+
+If a decision is ambiguous, choose the approach that produces the most reliable hackathon-ready implementation.
+
+MOST IMPORTANT:
+
+I need a REAL, FULLY WORKING HACKATHON PROJECT, not merely a beautiful frontend.
+
+Build LocalLoop end-to-end.

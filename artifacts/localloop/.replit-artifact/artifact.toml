@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "LocalLoop"
+description = "A community platform for discovering nearby events, joining activities, and organizing gatherings with trusted local organizers."
+version = "1.0.0"
+id = "artifacts/localloop"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 20780
+
+[services.development]
+run = "pnpm --filter @workspace/localloop run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/localloop", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/localloop/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "20780"
+BASE_PATH = "/"
